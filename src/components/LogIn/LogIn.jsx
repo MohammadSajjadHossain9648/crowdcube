@@ -69,9 +69,9 @@ const LogIn = () => {
                             <button onClick={handleToLogin} className="btn text-white_color font-bold bg-blue_bg_color">Login</button>
                         </div>
                         <div className="flex items-center justify-center">
-                            <div className="sm:w-20 md:w-36 border border-black_color rounded-lg"></div>
+                            <div className="w-36 border border-black_color rounded-lg"></div>
                             <h2 className="font-bold text-black_color mx-2">or</h2>
-                            <div className="sm:w-20 md:w-36 border border-black_color rounded-lg"></div>
+                            <div className="w-36 border border-black_color rounded-lg"></div>
                         </div>
                         <div className="form-control">
                             <button onClick={handleToGoogleLogIn} className="btn text-white_color font-bold bg-blue_bg_color">
