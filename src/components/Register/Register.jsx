@@ -1,8 +1,12 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { IoEyeOffOutline, IoEyeOutline } from 'react-icons/io5';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { authContext } from '../AuthProvider/AuthProvider';
+import { toast } from 'react-toastify';
 
 const Register = () => {
+    const {handleToSignUp, updateUser, handleToGoogle} = useContext(authContext);
+
     const [visible1, setVisible1] = useState(false);
     const togglePassword1 = () => {
         setVisible1(!visible1);
@@ -11,6 +15,66 @@ const Register = () => {
     const togglePassword2 = () => {
         setVisible2(!visible2);
     };
+
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    const handleToSubmit = (e) => {
+        e.preventDefault();
+        const name = e.target.name.value;
+        const email = e.target.email.value;
+        const image = e.target.image.files[0];
+        const password = e.target.password.value;
+        const conPassword = e.target.conPassword.value;
+
+        // check password condition
+        if(password.length <6){
+            toast.error("Password must be at least 6 characters");
+            return ;
+        }
+        if(password != conPassword){
+            toast.error("Passwords didn't match");
+            return ;
+        }
+        if(!/[A-Z]/.test(password)){
+            toast.error("Password must include at least one uppercase letter.");
+            return ;
+        }
+        if(!/[a-z]/.test(password)){
+            toast.error("Password must include at least one lowercase letter.");
+            return ;
+        }
+
+        handleToSignUp(email, password)
+        .then(res => {
+            updateUser(name, image);
+            toast.success("User created successfully",{
+                position: "top-center",
+                autoClose: 3000
+            });
+            navigate(location.state?.from || '/');
+        })
+        .catch(err => {
+            toast.warning(`${err.message}`,{
+                position: "top-center",
+                autoClose: 3000
+            });
+        })
+    };
+
+    const handleToGoogleSignUp = () => {
+        handleToGoogle()
+        .then(res => {
+            navigate(location.state?.from || '/');
+        })
+        .catch(err => {
+            toast.warning(`${err.message}`,{
+                position: "top-center",
+                autoClose: 3000
+            });
+        })
+    }
+
 
     return (
         <div className="hero bg-base-200 min-h-screen">
@@ -24,7 +88,7 @@ const Register = () => {
 
 
                 <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
-                    <form className="card-body">
+                    <form className="card-body" onSubmit={handleToSubmit}>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text text-blue_color">Name</span>
@@ -74,7 +138,7 @@ const Register = () => {
                             <div className="w-36 border border-black_color rounded-lg"></div>
                         </div>
                         <div className="form-control">
-                            <button className="btn text-white_color font-bold bg-blue_bg_color">
+                            <button onClick={handleToGoogleSignUp} className="btn text-white_color font-bold bg-blue_bg_color">
                                 Sign up with Google
                             </button>
                         </div>
