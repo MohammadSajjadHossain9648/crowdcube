@@ -8,6 +8,8 @@ import AddNewCampaign from "../components/AddNewCampaign/AddNewCampaign";
 import MyCampaign from "../components/MyCampaign/MyCampaign";
 import MyDonations from "../components/MyDonations/MyDonations";
 import PrivateRoute from "../components/PrivateRoute/PrivateRoute";
+import MainErrorLayout from "../components/MainErrorLayout/MainErrorLayout";
+import ErrorPage from "../components/ErrorPage/ErrorPage";
 
 const router = createBrowserRouter([
   {
@@ -50,6 +52,16 @@ const router = createBrowserRouter([
       }
     ]
   },
+  {
+    path: "*",
+    element: <MainErrorLayout></MainErrorLayout>,
+    children: [
+        {
+            path: "*",
+            element: <ErrorPage></ErrorPage>
+        }
+    ]
+  }
 ]);
 
 export default router;

@@ -19,6 +19,10 @@ export default {
 
         gray_color: "#666666",
         dark_gray_color: "#343a40",
+
+        green_color: 'rgb(48, 156, 8)',
+
+        red_color: 'rgb(156, 8, 8)',
       }
     },
   },
