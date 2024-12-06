@@ -4,7 +4,7 @@ import Footer from '../Footer/Footer';
 
 const MainLayout = () => {
     return (
-        <div>
+        <div className="max-w-7xl mx-auto font_outfit text-black_color">
             {/* navbar section */}
             <Navbar></Navbar>
 
