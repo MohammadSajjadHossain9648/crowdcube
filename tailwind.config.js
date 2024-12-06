@@ -5,7 +5,22 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        white_color: "#ffffff",
+
+        black_color: "#000000",
+
+        blue_color: "#002C55",
+        blue_bg_color: "#0d6efd",
+
+        orange_color: "#fd7e14",
+        orange_bg_color: "#FF5C00",
+
+        gray_color: "#666666",
+        dark_gray_color: "#343a40",
+      }
+    },
   },
   plugins: [require('daisyui'),],
 }
