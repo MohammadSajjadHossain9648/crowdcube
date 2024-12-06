@@ -29,6 +29,10 @@ const router = createBrowserRouter([
         element: <Register></Register>
       },
       {
+        path: "/ForgetPassword",
+        element: <ForgetPassword></ForgetPassword>
+      },
+      {
         path: "/AllCampaign",
         element: <AllCampaign></AllCampaign>
       },

@@ -1,7 +1,38 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { authContext } from '../AuthProvider/AuthProvider';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const LogIn = () => {
+    const {handleToGoogle, handleToLogin} = useContext(authContext);
+
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    const handleToSubmit = (e) => {
+        e.preventDefault();
+        const email = e.target.email.value;
+        const password = e.target.password.value;
+
+        handleToLogin(email, password)
+        .then(res => {
+            navigate(location.state?.from || '/');
+        })
+        .catch(err => {
+            toast.error(err.message);
+        })
+    };
+
+    const handleToGoogleLogIn = () => {
+        handleToGoogle()
+        .then(res => {
+            navigate(location.state?.from || '/');
+        })
+        .catch(err => {
+            toast.error(err.message);
+        })
+    }
+
     return (
         <div className="hero bg-base-200 min-h-screen px-12">
             <div className="hero-content flex-col lg:flex-row">
@@ -13,7 +44,7 @@ const LogIn = () => {
                 </div>
 
                 <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
-                    <form className="card-body">
+                    <form className="card-body" onClick={handleToSubmit}>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text text-blue_color">Email</span>
@@ -35,7 +66,7 @@ const LogIn = () => {
                             </div>
                         </div>
                         <div className="form-control mt-6">
-                            <button className="btn text-white_color font-bold bg-blue_bg_color">Login</button>
+                            <button onClick={handleToLogin} className="btn text-white_color font-bold bg-blue_bg_color">Login</button>
                         </div>
                         <div className="flex items-center justify-center">
                             <div className="sm:w-20 md:w-36 border border-black_color rounded-lg"></div>
@@ -43,7 +74,7 @@ const LogIn = () => {
                             <div className="sm:w-20 md:w-36 border border-black_color rounded-lg"></div>
                         </div>
                         <div className="form-control">
-                            <button className="btn text-white_color font-bold bg-blue_bg_color">
+                            <button onClick={handleToGoogleLogIn} className="btn text-white_color font-bold bg-blue_bg_color">
                                 Sign in with Google
                             </button>
                         </div>
