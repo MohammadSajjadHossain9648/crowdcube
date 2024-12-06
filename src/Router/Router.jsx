@@ -7,6 +7,7 @@ import AllCampaign from "../components/AllCampaign/AllCampaign";
 import AddNewCampaign from "../components/AddNewCampaign/AddNewCampaign";
 import MyCampaign from "../components/MyCampaign/MyCampaign";
 import MyDonations from "../components/MyDonations/MyDonations";
+import PrivateRoute from "../components/PrivateRoute/PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -31,15 +32,21 @@ const router = createBrowserRouter([
       },
       {
         path: "/AddNewCampaign",
-        element: <AddNewCampaign></AddNewCampaign>
+        element: <PrivateRoute>
+          <AddNewCampaign></AddNewCampaign>
+        </PrivateRoute>
       },
       {
         path: "/MyCampaign",
-        element: <MyCampaign></MyCampaign>
+        element: <PrivateRoute>
+          <MyCampaign></MyCampaign>
+        </PrivateRoute>
       },
       {
         path: "/MyDonations",
-        element: <MyDonations></MyDonations>
+        element: <PrivateRoute>
+          <MyDonations></MyDonations>
+        </PrivateRoute>
       }
     ]
   },
