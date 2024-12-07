@@ -7,7 +7,7 @@ import { MdDesignServices } from 'react-icons/md';
 const Categories = () => {
     return (
         <div className="py-12 px-8 bg-blue_bg_color">
-            <div className="">
+            <div>
                 <p className="mb-3 font-bold text-white_color">EXPLORE CATEGORIES</p>
                 <h2 className="text-4xl font-bold text-white_color">Which Category Interest You</h2>
             </div>
