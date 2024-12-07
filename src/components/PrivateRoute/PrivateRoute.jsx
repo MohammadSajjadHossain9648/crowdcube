@@ -4,12 +4,12 @@ import { authContext } from '../AuthProvider/AuthProvider';
 
 const PrivateRoute = ({children}) => {
     const {user, loading} = useContext(authContext);
+    const location = useLocation();
 
     if(loading){
         return <h2>Loading...</h2>
     }
 
-    const location = useLocation();
     if(!user){
         return <Navigate state={{from:location.pathname}} to={'/LogIn'}></Navigate>
     }
