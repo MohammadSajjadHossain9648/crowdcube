@@ -18,7 +18,8 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Home></Home>
+        element: <Home></Home>,
+        loader: () => fetch('/banners.json')
       },
       {
         path: "/LogIn",
@@ -27,10 +28,6 @@ const router = createBrowserRouter([
       {
         path: "/Register",
         element: <Register></Register>
-      },
-      {
-        path: "/ForgetPassword",
-        element: <ForgetPassword></ForgetPassword>
       },
       {
         path: "/AllCampaign",
