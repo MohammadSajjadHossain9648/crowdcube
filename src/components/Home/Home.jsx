@@ -6,7 +6,6 @@ import RunningCampaign from '../RunningCampaign/RunningCampaign';
 
 const Home = () => {
     const {banners, campaigns} = useLoaderData();
-    console.log(banners, campaigns);
 
     return (
         <div>

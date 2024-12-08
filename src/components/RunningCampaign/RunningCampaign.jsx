@@ -13,7 +13,7 @@ const RunningCampaign = ({ campaigns }) => {
       </div>
       <div className="grid sm:grid-cols-1 md:grid-cols-3 justify-center gap-8">
         {campaigns.map((campaign, index) => (
-          <div className="card card-compact bg-base-100 shadow-xl">
+          <div key={index} className="card card-compact bg-base-100 shadow-xl">
             <figure>
               <img className="sm:h-64 md:h-52 w-full" src={campaign.thumbnail} alt={campaign.title} />
             </figure>

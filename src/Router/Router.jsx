@@ -23,7 +23,7 @@ const router = createBrowserRouter([
           const bannersJSON = await fetch('/banners.json');
           const banners = await bannersJSON.json();
 
-          const campaignsJSON = await fetch('http://localhost:4000/runningCampaign');
+          const campaignsJSON = await fetch('http://localhost:5000/runningCampaign');
           const campaigns = await campaignsJSON.json();
 
           return { banners, campaigns };
@@ -39,7 +39,8 @@ const router = createBrowserRouter([
       },
       {
         path: "/AllCampaign",
-        element: <AllCampaign></AllCampaign>
+        element: <AllCampaign></AllCampaign>,
+        loader: () => fetch('http://localhost:5000/allCampaign')
       },
       {
         path: "/AddNewCampaign",
