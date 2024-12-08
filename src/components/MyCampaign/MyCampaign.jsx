@@ -7,7 +7,9 @@ const MyCampaign = () => {
   const data = useLoaderData();
 
   const { user } = useContext(authContext);
-  const campaigns = data.filter((person) => person.email === user.email);
+  const filteredCampaigns = data.filter((person) => person.email === user.email);
+
+  const [campaigns, setCampaign] = useState(filteredCampaigns);
 
   const handleToDelete = (_id) => {
     // Delete campaign from the database using the _id
@@ -32,6 +34,9 @@ const MyCampaign = () => {
                 text: "Your campaign has been deleted.",
                 icon: "success",
               });
+
+              const remainingCampaigns = campaigns.filter(campaign => campaign._id !== _id);
+              setCampaign(remainingCampaigns);
             }
           });
       }
