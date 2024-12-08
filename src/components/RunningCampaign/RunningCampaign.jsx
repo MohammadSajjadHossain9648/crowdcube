@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const RunningCampaign = ({ campaigns }) => {
   return (
@@ -25,7 +26,9 @@ const RunningCampaign = ({ campaigns }) => {
               <p className="text-sm text-gray_color">Minimum Donation: {campaign.minDonation}$</p>
                 <p className="text-sm text-gray_color">Deadline: {campaign.deadline}</p>
               <div className="card-actions justify-end">
-                <button className="btn text-white_color font-bold bg-blue_bg_color">See More</button>
+                <button className="btn text-white_color font-bold bg-blue_bg_color">
+                  <Link to={`/campaignDetail/${campaign._id}`}>See More</Link>
+                </button>
               </div>
             </div>
           </div>

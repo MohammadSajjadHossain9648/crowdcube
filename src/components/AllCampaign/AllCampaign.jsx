@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { PiSlidersBold } from "react-icons/pi";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 
 const AllCampaign = () => {
   const campaigns = useLoaderData();
@@ -14,6 +14,7 @@ const AllCampaign = () => {
     );
     setSortedCampaigns(sorted);
   };
+
 
   return (
     <div className="sm:w-full md:w-11/12 mx-auto my-8">
@@ -63,7 +64,7 @@ const AllCampaign = () => {
                 </td>
                 <td>
                   <button className="btn text-white_color font-bold bg-blue_bg_color">
-                    See More
+                    <Link to={`/campaignDetail/${sortedCampaign._id}`}>See More</Link>
                   </button>
                 </td>
               </tr>
