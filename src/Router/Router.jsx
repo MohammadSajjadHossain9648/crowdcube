@@ -11,6 +11,7 @@ import PrivateRoute from "../components/PrivateRoute/PrivateRoute";
 import MainErrorLayout from "../components/MainErrorLayout/MainErrorLayout";
 import ErrorPage from "../components/ErrorPage/ErrorPage";
 import UpdateCampaign from "../components/UpdateCampaign/UpdateCampaign";
+import CampaignDetail from "../components/CampaignDetail/CampaignDetail";
 
 const router = createBrowserRouter([
   {
@@ -42,6 +43,13 @@ const router = createBrowserRouter([
         path: "/AllCampaign",
         element: <AllCampaign></AllCampaign>,
         loader: () => fetch('http://localhost:5000/allCampaign')
+      },
+      {
+        path: "/campaignDetail/:id",
+        element: <PrivateRoute>
+            <CampaignDetail></CampaignDetail>
+          </PrivateRoute>,
+        loader: ({params}) => fetch(`http://localhost:5000/campaignDetail/${params.id}`)
       },
       {
         path: "/AddNewCampaign",
