@@ -3,6 +3,7 @@ import { useLoaderData } from 'react-router-dom';
 import Banner from '../Banner/Banner';
 import Categories from '../Categories/Categories';
 import RunningCampaign from '../RunningCampaign/RunningCampaign';
+import Advertisement from '../Advertisement/Advertisement';
 
 const Home = () => {
     const {banners, campaigns} = useLoaderData();
@@ -17,6 +18,9 @@ const Home = () => {
 
             {/* RunningCampaign section */}
             <RunningCampaign campaigns={campaigns}></RunningCampaign>
+
+            {/* Advertisement section */}
+            <Advertisement></Advertisement>
         </div>
     );
 };

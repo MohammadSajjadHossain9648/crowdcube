@@ -20,7 +20,7 @@ const Banner = ({ banners }) => {
                     delay: 5000,
                     disableOnInteraction: false,
                 }}
-                className="w-full"
+                className="w-full mt-4"
             >
                 {banners.map((banner, index) => (
                     <SwiperSlide key={index} className="relative">
