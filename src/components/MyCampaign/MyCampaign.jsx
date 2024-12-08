@@ -1,12 +1,42 @@
 import React, { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
 import { authContext } from "../AuthProvider/AuthProvider";
+import Swal from "sweetalert2";
 
 const MyCampaign = () => {
   const data = useLoaderData();
 
   const { user } = useContext(authContext);
-  const campaigns = data.filter((person) => person.email === user.email)
+  const campaigns = data.filter((person) => person.email === user.email);
+
+  const handleToDelete = (_id) => {
+    // Delete campaign from the database using the _id
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:4000/myCampaign/${_id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.deletedCount > 0) {
+              Swal.fire({
+                title: "Deleted!",
+                text: "Your campaign has been deleted.",
+                icon: "success",
+              });
+            }
+          });
+      }
+    });
+  };
 
   return (
     <div>
@@ -36,14 +66,15 @@ const MyCampaign = () => {
                   {campaign.title}
                 </td>
                 <td className="text-gray_color">{campaign.deadline}</td>
-                <td className="text-gray_color">
-                  {campaign.minDonation}
-                </td>
+                <td className="text-gray_color">{campaign.minDonation}</td>
                 <td>
-                  <button className="btn mr-2 text-white_color font-bold bg-blue_bg_color">
+                  <button className="btn mr-2 text-white_color font-bold bg-green_color">
                     Update
                   </button>
-                  <button className="btn text-white_color font-bold bg-blue_bg_color">
+                  <button
+                    onClick={() => handleToDelete(campaign._id)}
+                    className="btn text-white_color font-bold bg-red_color"
+                  >
                     Delete
                   </button>
                 </td>
