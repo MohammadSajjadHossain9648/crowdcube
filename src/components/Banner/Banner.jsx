@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 
 const Banner = ({ banners }) => {
     const scrollToSection = () => {
-        document.getElementById('about').scrollIntoView({ behavior: 'smooth' });
+        document.getElementById('runningCampaign').scrollIntoView({ behavior: 'smooth' });
     };
 
     return (
@@ -37,8 +37,8 @@ const Banner = ({ banners }) => {
                             {/* title */}
                             <p className="mt-3 sm:w-3/5 md:w-3/4 lg:w-3/5 sm:text-4xl md:text-6xl font-bold text-white_color animate__animated animate__fadeInUp animate__delay-2s">{banner.title}</p>
                             {/* button */}
-                            <button className="btn border-none mt-5 font-bold bg-orange_color hover:bg-orange_bg_color text-white_color py-2 px-4 rounded-lg animate__animated animate__fadeInUp animate__delay-3s">
-                                <Link><button onClick={scrollToSection}>Learn More</button></Link>
+                            <button onClick={scrollToSection} className="btn border-none mt-5 font-bold bg-orange_color hover:bg-orange_bg_color text-white_color py-2 px-4 rounded-lg animate__animated animate__fadeInUp animate__delay-3s">
+                                Learn More
                             </button>
                         </div>
                     </SwiperSlide>

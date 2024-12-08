@@ -19,7 +19,15 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader: () => fetch('/banners.json')
+        loader: async() => {
+          const bannersJSON = await fetch('/banners.json');
+          const banners = await bannersJSON.json();
+
+          const campaignsJSON = await fetch('http://localhost:4000/runningCampaign');
+          const campaigns = await campaignsJSON.json();
+
+          return { banners, campaigns };
+        }
       },
       {
         path: "/LogIn",
