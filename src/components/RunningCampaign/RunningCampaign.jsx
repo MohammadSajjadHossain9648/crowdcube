@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const RunningCampaign = ({ campaigns }) => {
   return (
-    <div id="runningCampaign" className="m-12">
+    <div id="runningCampaign" className="w-11/12 mx-auto my-12">
       <div className="text-center mb-6">
         <p className="mb-3 text-2xl font-bold text-orange_color">
           Popular projects

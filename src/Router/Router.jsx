@@ -75,7 +75,8 @@ const router = createBrowserRouter([
         path: "/MyDonations",
         element: <PrivateRoute>
           <MyDonations></MyDonations>
-        </PrivateRoute>
+        </PrivateRoute>,
+        loader: () => fetch('http://localhost:4000/myDonations')
       }
     ]
   },

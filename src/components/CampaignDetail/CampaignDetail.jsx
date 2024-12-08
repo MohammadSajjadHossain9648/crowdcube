@@ -20,6 +20,14 @@ const CampaignDetail = () => {
   const deadlineDate = new Date(deadline);
   const isDeadlineOver = currentDate > deadlineDate;
 
+  if(isDeadlineOver){
+    Swal.fire({
+      title: "warning!",
+      text: "Donation Deadline Is Over",
+      icon: "warning",
+      confirmButtonText: "Ok",
+    });
+  }
 
   const handleToDonate = (_id) => {
     // sent data to the server
