@@ -16,7 +16,7 @@ const AllCampaign = () => {
   };
 
   return (
-    <div className="w-11/12 mx-auto my-12">
+    <div className="sm:w-full md:w-11/12 mx-auto my-12">
       <div className="mb-5 flex justify-between items-center">
         <p className="mb-3 text-3xl font-bold text-orange_color">
           All Campaign
