@@ -76,7 +76,7 @@ const router = createBrowserRouter([
         element: <PrivateRoute>
           <MyDonations></MyDonations>
         </PrivateRoute>,
-        loader: () => fetch('http://localhost:4000/myDonations')
+        loader: () => fetch('https://crowdcube-server-bay.vercel.app/myDonations')
       }
     ]
   },
