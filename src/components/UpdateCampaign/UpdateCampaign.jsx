@@ -43,7 +43,7 @@ const UpdateCampaign = () => {
     };
 
     // sent data to the server
-    fetch(`http://localhost:5000/updateCampaign/${_id}`, {
+    fetch(`https://crowdcube-server-bay.vercel.app/updateCampaign/${_id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

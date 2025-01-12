@@ -29,7 +29,7 @@ const AddNewCampaign = () => {
     };
 
     // sent data to the server
-    fetch("http://localhost:5000/campaign", {
+    fetch("https://crowdcube-server-bay.vercel.app/campaign", {
       method: "POST",
       headers: {
         "content-type": "application/json",

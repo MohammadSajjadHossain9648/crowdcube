@@ -1,6 +1,6 @@
 # **CrowdCube**
 
-**Live Site URL**: [http://www.crowdcube.surge.sh](http://www.crowdcube.surge.sh)
+**Live Site URL**: [https://crowdcube-f1f1e.web.app](https://crowdcube-f1f1e.web.app)
 
 ---
 

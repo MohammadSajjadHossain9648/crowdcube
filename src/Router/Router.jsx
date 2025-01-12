@@ -25,7 +25,7 @@ const router = createBrowserRouter([
           const bannersJSON = await fetch('/banners.json');
           const banners = await bannersJSON.json();
 
-          const campaignsJSON = await fetch('http://localhost:5000/runningCampaign');
+          const campaignsJSON = await fetch('https://crowdcube-server-bay.vercel.app/runningCampaign');
           const campaigns = await campaignsJSON.json();
 
           return { banners, campaigns };
@@ -42,14 +42,14 @@ const router = createBrowserRouter([
       {
         path: "/AllCampaign",
         element: <AllCampaign></AllCampaign>,
-        loader: () => fetch('http://localhost:5000/allCampaign')
+        loader: () => fetch('https://crowdcube-server-bay.vercel.app/allCampaign')
       },
       {
         path: "/campaignDetail/:id",
         element: <PrivateRoute>
             <CampaignDetail></CampaignDetail>
           </PrivateRoute>,
-        loader: ({params}) => fetch(`http://localhost:5000/campaignDetail/${params.id}`)
+        loader: ({params}) => fetch(`https://crowdcube-server-bay.vercel.app/campaignDetail/${params.id}`)
       },
       {
         path: "/AddNewCampaign",
@@ -62,14 +62,14 @@ const router = createBrowserRouter([
         element: <PrivateRoute>
           <MyCampaign></MyCampaign>
         </PrivateRoute>,
-        loader: () => fetch('http://localhost:5000/myCampaign')
+        loader: () => fetch('https://crowdcube-server-bay.vercel.app/myCampaign')
       },
       {
         path: "/updateCampaign/:id",
         element: <PrivateRoute>
           <UpdateCampaign></UpdateCampaign>
         </PrivateRoute>,
-        loader: ({params}) => fetch(`http://localhost:5000/updateCampaign/${params.id}`)
+        loader: ({params}) => fetch(`https://crowdcube-server-bay.vercel.app/updateCampaign/${params.id}`)
       },
       {
         path: "/MyDonations",

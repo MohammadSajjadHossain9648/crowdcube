@@ -31,7 +31,7 @@ const CampaignDetail = () => {
 
   const handleToDonate = (_id) => {
     // sent data to the server
-    fetch(`http://localhost:5000/campaignDetail/${_id}`, {
+    fetch(`https://crowdcube-server-bay.vercel.app/campaignDetail/${_id}`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
